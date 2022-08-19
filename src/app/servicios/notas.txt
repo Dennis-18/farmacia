@@ -1,0 +1,3 @@
+se instala libreria para poder realizar la paginacion
+esta libreria se debe incluir en cada modulo en el que se va utilizar
+comando: npm i ngx-pagination
