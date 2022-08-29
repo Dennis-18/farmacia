@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { EmpleadosModule } from './empleados/empleados.module';
 import { ProductosModule } from './productos/productos.module';
 import { ServiciosModule } from './servicios/servicios.module';
+import { apiService } from './productos/api.service';
 
 
 @NgModule({
@@ -23,9 +25,10 @@ import { ServiciosModule } from './servicios/servicios.module';
     EmpleadosModule,
     ProductosModule,
     ServiciosModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [apiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
