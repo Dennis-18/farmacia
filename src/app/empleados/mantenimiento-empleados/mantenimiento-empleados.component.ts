@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { empleados } from 'src/app/shared/interfaces/empleados.interface';
+import { PruebasService } from 'src/app/shared/services/pruebas.service';
 
 @Component({
   selector: 'app-mantenimiento-empleados',
@@ -77,11 +79,28 @@ export class MantenimientoEmpleadosComponent {
     texto_fuerte: '',
     texto_normal: ''
   }
-  constructor(private router: Router) { }
+
+  empleados2: empleados[] = []; //puede ser un array vacio
+
+  //voy a llamar a mi servicio para poder hacer push
+  constructor(
+    private router: Router, 
+    private empleadosSvc: PruebasService     //importo el servicio 
+  ) { }
 
   ngOnInit() {
+    this.getEmpleados();
   }
 
+  getEmpleados():void{
+
+    this.empleadosSvc.getAllEmpleados().subscribe(res =>{
+      this.empleados2 = res
+    }, error =>{
+      console.log(error)
+    })
+
+  }
 
   //en este metodo se va enviar la nueva informacion para actualizar el registro seleccionado
   updateEmmpleado(){
@@ -130,6 +149,8 @@ export class MantenimientoEmpleadosComponent {
 
 
 }
+
+
 export interface Empleados {
   id: number;
   nombres: string;

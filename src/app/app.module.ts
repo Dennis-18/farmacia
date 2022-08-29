@@ -9,6 +9,8 @@ import { MenuComponent } from './menu/menu.component';
 import { EmpleadosModule } from './empleados/empleados.module';
 import { ProductosModule } from './productos/productos.module';
 import { ServiciosModule } from './servicios/servicios.module';
+import { PruebasService } from './shared/services/pruebas.service';
+import {  HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,6 +20,7 @@ import { ServiciosModule } from './servicios/servicios.module';
     MenuComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     EmpleadosModule,
@@ -25,7 +28,7 @@ import { ServiciosModule } from './servicios/servicios.module';
     ServiciosModule,
     FormsModule
   ],
-  providers: [],
+  providers: [PruebasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
