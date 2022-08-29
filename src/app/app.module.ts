@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,8 +10,11 @@ import { MenuComponent } from './menu/menu.component';
 import { EmpleadosModule } from './empleados/empleados.module';
 import { ProductosModule } from './productos/productos.module';
 import { ServiciosModule } from './servicios/servicios.module';
+
 import { PruebasService } from './shared/services/pruebas.service';
-import {  HttpClientModule } from '@angular/common/http';
+
+import { apiService } from './productos/api.service';
+
 
 
 @NgModule({
@@ -26,9 +30,14 @@ import {  HttpClientModule } from '@angular/common/http';
     EmpleadosModule,
     ProductosModule,
     ServiciosModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
+
   providers: [PruebasService],
+
+ // providers: [apiService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
