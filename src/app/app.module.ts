@@ -10,7 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { EmpleadosModule } from './empleados/empleados.module';
 import { ProductosModule } from './productos/productos.module';
 import { ServiciosModule } from './servicios/servicios.module';
-import { apiService } from './productos/api.service';
+import { apiService } from './login/api.service';
 
 
 @NgModule({

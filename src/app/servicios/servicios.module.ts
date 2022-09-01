@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MantenimientoServiciosComponent } from './mantenimiento-servicios/mantenimiento-servicios.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { apiService } from './api-service';
+
 //paginacion
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -19,6 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ],
   exports: [
     MantenimientoServiciosComponent
-  ]
+  ],
+  providers: [HttpClientModule, apiService]
 })
 export class ServiciosModule { }

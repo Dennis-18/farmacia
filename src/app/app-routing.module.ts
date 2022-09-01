@@ -8,6 +8,7 @@ import { MantenimientoServiciosComponent } from './servicios/mantenimiento-servi
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'menu',component: MenuComponent},
   {path: 'servicios', component: MantenimientoServiciosComponent},
   {path: 'productos', component: MantenimientoProductosComponent},

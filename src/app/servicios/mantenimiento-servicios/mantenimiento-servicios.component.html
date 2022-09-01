@@ -28,14 +28,30 @@
       </div> -->
         <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="nuevoServicio.descripcion" placeholder="Nombre del servicio" required>
         <button class="btn btn-outline-secondary"(click)="
-          nuevoServicio = {id:0, descripcion: ''};
+          
+        text_btn ='Agregar';
+        insertar = false;
+        buscarPorNombre();
+      ">Buscar</button>
+
+        <button class="btn btn-outline-secondary"(click)="
+          
           text_btn ='Agregar';
+          insertar = true;
+          nuevoServicio.descripcion = '';
+          cargarServicios()
         ">X</button>
     </div>
     
-    <button type="submit" class="btn btn-primary mt-2" (click)="updateServicio()">{{text_btn}}</button>
+    <button type="submit" class="btn btn-primary mt-2" *ngIf="insertar" (click)="agregarServicio();">{{text_btn}}</button>
+    <button type="submit" class="btn btn-primary mt-2" *ngIf="insertar == false" (click)="body.descripcion = nuevoServicio.descripcion;  updateServicio();">Modificar</button>
 
     <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" *ngIf="alerta == 1">
+      <strong>{{text_alertas.texto_fuerte}}</strong> {{text_alertas.texto_normal}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert" *ngIf="alerta == 2">
       <strong>{{text_alertas.texto_fuerte}}</strong> {{text_alertas.texto_normal}}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -55,15 +71,19 @@
     <tbody >
       <!-- <tr *ngFor=" let elemento of datos let i = index"> -->
         <tr *ngFor="let servicio of servicios | paginate: {itemsPerPage: 5, currentPage: page} let i = index ">
-        <th>{{servicio.id}}</th>
+        <th>{{servicio.id_servicio}}</th>
         <td scope="row">{{servicio.descripcion}}</td>
         <td>
           <div class="d-flex justify-content-evenly">
           <button 
             class="btn btn-info" 
             (click)="text_btn = 'Modificar';
-            nuevoServicio.id = servicio.id;
+            
             nuevoServicio.descripcion = servicio.descripcion;
+            body.id_servicio = servicio.id_servicio;
+            
+            insertar = false;
+            
             "
 
             >
@@ -74,7 +94,8 @@
             data-bs-toggle="modal" 
             data-bs-target="#staticBackdrop"
             (click)="nuevoServicio.descripcion = servicio.descripcion;
-                     nuevoServicio.id = servicio.id"   
+                  body.id_servicio = servicio.id_servicio;
+                    "   
             >Eliminar
           </button>
         </div>
@@ -100,7 +121,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="eliminar()">Eliminar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="cambiarEstado()">Eliminar</button>
       </div>
     </div>
   </div>
