@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { empleados } from 'src/app/shared/interfaces/empleados.interface';
@@ -12,61 +13,48 @@ export class MantenimientoEmpleadosComponent {
 
   titulo: string = 'Empleados'
 
-  empleados: Empleados[] = [
-    {
-      id: 1,
-      nombres: 'Brayan',
-      apellidos: 'Cordova',
-      fecha_nacimiento: '1/1/1994',
-      dpi: 2235643434,
-      renglon: 23,
-      telefono: 324223433,
-      correo: 'brayan@gmail.com',
-      puesto: 'digitador',
-      id_tipo_usuario: 1,
-    },
-    {
-      id: 2,
-      nombres: 'Brayan',
-      apellidos: 'Cordova',
-      fecha_nacimiento: '1/1/1994',
-      dpi: 2235643434,
-      renglon: 23,
-      telefono: 324223433,
-      correo: 'brayan@gmail.com',
-      puesto: 'digitador',
-      id_tipo_usuario: 2,
-    },
-    {
-    id: 3,
-    nombres: 'Dennis',
-    apellidos: 'Juarez',
-    fecha_nacimiento: '1/1/1994',
-    dpi: 2235643434,
-    renglon: 23,
-    telefono: 324223433,
-    correo: 'Dennis@gmail.com',
-    puesto: 'comandante',
-    id_tipo_usuario: 3,
+
+  date: Date = new Date();
+  anio = this.date.getFullYear();
+  mes = this.date.getMonth() + 1;
+  dia = this.date.getDate();
+
+
+  fecha = this.anio + '-' + this.mes + '-' + this.dia; 
+
+
+  empleados: Empleados[]=[]; //array vacio 
+
+  public nuevoEmpleado = {
+    id: 0,
+    nombre: '',
+    apellido: '',
+    fecha_nacimiento: '',
+    dpi: 0,
+    renglon: 0,
+    telefono: 0,
+    correo: '',
+    password: '',
+    id_tipo_usuario: 0,
   }
 
-  ]
-
-  nuevoEmpleado = {
-    id: 5,
-    nombre: 'Dennis',
-    apellido: 'Marroquin',
-    fecha_nacimiento: '1/1/1999',
-    dpi: 23342342334,
-    renglon: 23,
-    telefono: 32345345,
-    correo: 'dennis@',
-    puesto: 'digitador',
-    id_tipo_usuario: 3,
+  public nuevoEmpleadoBusqueda = {
+    id: 0,
+    nombre: '',
+    apellido: '',
+    fecha_nacimiento: '',
+    dpi: 0,
+    renglon: 0,
+    telefono: 0,
+    correo: '',
+    password: '',
+    id_tipo_usuario: 0,
   }
 
 
-  text_btn: string = 'Agregar'
+  text_btn: string = 'Agregar';
+
+  insertar = true;
 
   page = 1;
 
@@ -80,7 +68,7 @@ export class MantenimientoEmpleadosComponent {
     texto_normal: ''
   }
 
-  empleados2: empleados[] = []; //puede ser un array vacio
+  public empleados2: empleados[] = []; //puede ser un array vacio
 
   //voy a llamar a mi servicio para poder hacer push
   constructor(
@@ -90,9 +78,11 @@ export class MantenimientoEmpleadosComponent {
 
   ngOnInit() {
     this.getEmpleados();
+    // this.insertEmpleados();
   }
 
-  getEmpleados():void{
+  //todos los empleados
+  getEmpleados():void{    
 
     this.empleadosSvc.getAllEmpleados().subscribe(res =>{
       this.empleados2 = res
@@ -100,15 +90,90 @@ export class MantenimientoEmpleadosComponent {
       console.log(error)
     })
 
+
   }
 
+  //insertar un nuevo empleado 
+
+  insertEmpleados(){
+
+    if(this.nuevoEmpleado.nombre == null || this.nuevoEmpleado.apellido == null || this.nuevoEmpleado.correo == null || this.nuevoEmpleado.dpi == null
+      || this.nuevoEmpleado.fecha_nacimiento == null || this.nuevoEmpleado.id_tipo_usuario == null || this.nuevoEmpleado.renglon == null || this.nuevoEmpleado.telefono == null){
+        
+      }else{
+        
+        this.empleadosSvc.postEmpleados(this.nuevoEmpleado).subscribe(
+          (data:any) =>{
+
+            
+          }
+        )
+
+        this.alerta = 1;
+        
+        this.text_alertas = {
+          texto_fuerte: 'Insercion exitosa',
+          texto_normal: ''
+        }
+        setTimeout(()=>{
+          this.alerta = 0;
+        }, 2500)
+        
+        this.text_btn = 'Agregar'
+
+        this.router.navigate(['/empleados'])
+        .then(() => {
+          window.location.reload();
+        });
+
+      }
+      
+    
+  }
+
+  actualizarEmpleado(){
+
+    if(this.nuevoEmpleado.nombre == null || this.nuevoEmpleado.apellido == null || this.nuevoEmpleado.dpi == null || this.nuevoEmpleado.fecha_nacimiento == null ||
+      this.nuevoEmpleado.renglon == null || this.nuevoEmpleado.telefono == null || this.nuevoEmpleado.correo == null || this.nuevoEmpleado.password == null){
+
+        console.log("no pueden quedar campos vacios")
+
+      }else{
+
+        
+            this.empleadosSvc.updateEmpleados(this.nuevoEmpleado.id, this.nuevoEmpleado).subscribe(
+              (data:any) =>{
+               
+              }
+              
+              )
+              this.alerta = 1;
+                
+              this.text_alertas = {
+                texto_fuerte: 'Modificacion exitosa',
+                texto_normal: ''
+              }
+              setTimeout(()=>{
+                this.alerta = 0;
+              }, 2500)
+              
+              this.text_btn = 'Agregar'
+        
+              this.router.navigate(['/empleados'])
+              .then(() => {
+                window.location.reload();
+              });
+      }
+  }
+
+
   //en este metodo se va enviar la nueva informacion para actualizar el registro seleccionado
-  updateEmmpleado(){
-    if(this.nuevoEmpleado.nombre == '' || this.nuevoEmpleado.nombre == null){
+  updateEmmpleado() {
+    if (this.nuevoEmpleado.nombre == null || this.nuevoEmpleado.nombre == null) {
       //alerta, no se debe dejar vacio el campo
     }
-    else{
-      try{
+    else {
+      try {
         this.nuevoEmpleado = {
           id: 0,
           nombre: '',
@@ -118,26 +183,45 @@ export class MantenimientoEmpleadosComponent {
           renglon: 23,
           telefono: 32345345,
           correo: 'dennis@',
-          puesto: 'digitador',
+          password: 'digitador',
           id_tipo_usuario: 1,
         }
         this.alerta = 1;
-        
+
         this.text_alertas = {
           texto_fuerte: 'Actualizacion exitosa',
           texto_normal: ''
         }
-        setTimeout(()=>{
+        setTimeout(() => {
           this.alerta = 0;
         }, 2500)
-        
+
         this.text_btn = 'Agregar'
-      } catch(error){
+      } catch (error) {
         console.log(error);
       }
     }
 
   }
+
+  buscarEmpleados(){
+    let busqueda = {
+      nombre: this.nuevoEmpleadoBusqueda.nombre
+    }
+   
+    if(this.nuevoEmpleadoBusqueda.nombre == '' || this.nuevoEmpleadoBusqueda.nombre == null){
+      
+    } else {
+      
+      this.empleadosSvc.searchByName(busqueda).subscribe((data:any) => {
+        if(data.id == 1){
+          this.empleados2 = data.mensaje;
+ 
+        }
+      })
+    }
+  }
+
 
   eliminar(){
 
@@ -160,6 +244,6 @@ export interface Empleados {
   renglon: number;
   telefono: number;
   correo: string;
-  puesto: string;
+  password: string;
   id_tipo_usuario: number;
 }

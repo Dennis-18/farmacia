@@ -34,9 +34,7 @@ import { apiService } from './productos/api.service';
     HttpClientModule
   ],
 
-  providers: [PruebasService],
-
- // providers: [apiService],
+  providers: [PruebasService, apiService],
 
   bootstrap: [AppComponent]
 })
