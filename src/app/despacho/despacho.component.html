@@ -1,0 +1,103 @@
+<div class="container">
+  <div>
+    <h1 class="text-center mt-5 mb-5">INGRESO DE PRODUCTOS</h1>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <label for="descripcion">Selecciona producto</label>
+        <!-- <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="Nombre del producto" required> -->
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="despacho_producto.id_producto" name="producto" id="producto" (change)="lotes($event);">
+          <option *ngFor="let producto of datos_productos" [value]="producto.id_producto" >{{producto.descripcion}}</option>
+        </select>
+      </div>
+      <div class="row mt-2">
+        <div class="col-auto">
+
+          <label for="precio_unitario">Precio Unitario</label>
+          
+          <input type="number" class="form-control" id="cantidad" name="precio_unitario" placeholder="precio_unitario" required [(ngModel)]="precio_unitario">
+        </div>
+      </div>
+  
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <label for="servicios">Selecciona servicio</label>
+        <!-- <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="Nombre del producto" required> -->
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="despacho_producto.id_servicio" name="servicios" id="servicios" >
+          <option *ngFor="let servicio of data_servicios" [value]="servicio.id_servicio" >{{servicio.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-4">
+
+      <div class="col">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" required [(ngModel)]="despacho_producto.cantidad" (input)="precioTotal($event)">
+      </div>
+      <div class="col">
+        <label for="lote">Unidad de medida</label>
+        <!-- <input type="text" class="form-control" id="lote" name="lote" placeholder="Lote" required [(ngModel)]="despacho_producto.lote"> -->
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="despacho_producto.unidad_medida" name="lote" id="lote">
+          <option >Unidades</option>
+          <option >Caja</option>
+          <option >Ampóllas</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="lote">Lote</label>
+        <!-- <input type="text" class="form-control" id="lote" name="lote" placeholder="Lote" required [(ngModel)]="despacho_producto.lote"> -->
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="despacho_producto.lote" name="lote" id="lote" (change)="select_fecha($event);">
+          <option *ngFor="let lote of data_lotes" [value]="lote.lote" >{{lote.lote}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="fecha_vencimiento">Fecha de vencimiento</label>
+        <input type="text" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento"  [(ngModel)]="despacho_producto.fecha_vencimiento">
+      </div>
+
+    </div>
+
+    <div class="row mt-4">
+      <div class="col">
+        <label for="no_referencia">Precio total</label>
+        <p>{{precio_total | currency: 'Q'}}</p>
+      </div>
+    </div>
+  
+    <div class="row mt-4">
+      <div class="col-auto">
+        <label for="no_referencia">No. Referencia</label>
+        <input type="text" class="form-control" id="no_referencia" name="no_referencia"  [(ngModel)]="despacho_producto.no_referencia">
+      </div>
+
+    </div>
+  
+  <div>
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" *ngIf="alerta == 1">
+      <strong>Inventario Actualizado</strong> 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="alerta = 0"></button>
+    </div>
+  
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert" *ngIf="alerta == 2">
+      <strong>Ocurrio un Error</strong> Inténtelo de nuevo 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="alerta = 0"></button>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert" *ngIf="alerta == 3">
+      <strong>No existen lotes para este producto</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="alerta = 0"></button>
+    </div>
+
+  </div>
+  
+    <div class="row mt-5 mb-5">
+      <div class="col d-flex justify-content-around">
+        <button class="btn btn-danger" (click)="salir()">Cancelar</button>
+        <button class="btn btn-primary" (click)="inventario()">Guardar</button>
+  
+      </div>
+    </div>
+  </div>
+</div>

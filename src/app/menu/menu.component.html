@@ -1,34 +1,75 @@
-<div class="container mt-5 d-flex justify-content-evenly"> 
- <div class="card" style="width: 18rem;">
-        <img src="../../assets/addEmployee.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Empleados</h5>
-          <p class="card-text">En esta opcion puedes añadir un nuevo Colaborador o modificar datos de los que ya estan registrados</p>
-          <a  class="btn btn-primary" (click)="goEmpleados()">Iniciar</a>
-        </div>
-      </div>
+<div class="container mt-5 ">
 
-      <div class="card" style="width: 18rem;">
-        <img src="../../assets/Servicios.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Servicios</h5>
-          <p class="card-text">Añade, modifica o elimina servicios del hospital</p>
-          <a  class="btn btn-primary" (click)="goServicios()">Iniciar</a>
-        </div>
+  <div class="row d-flex justify-content-around">
+    <div class="card" style="width: 18rem;">
+      <img src="../../assets/addEmployee.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Empleados</h5>
+        <p class="card-text">En esta opcion puedes añadir un nuevo Colaborador o modificar datos de los que ya estan
+          registrados</p>
+        <a class="btn btn-primary" (click)="goEmpleados()">Iniciar</a>
       </div>
-      
-      <div class="card" style="width: 18rem;">
-        <img src="../../assets/productos.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Productos</h5>
-          <p class="card-text">Añade, modifica o elimina productos y medicinas para registrar movimientos</p>
-          <a  class="btn btn-primary" (click)="goProductos()">Iniciar</a>
-        </div>
-      </div> 
-<!-- </div> -->
-<!-- sidebar -->
+    </div>
+  
+    <div class="card" style="width: 18rem;">
+      <img src="../../assets/Servicios.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Servicios</h5>
+        <p class="card-text">Añade, modifica o elimina servicios del hospital</p>
+        <a class="btn btn-primary" (click)="goServicios()">Iniciar</a>
+      </div>
+    </div>
+  
+    <div class="card" style="width: 18rem;">
+      <img src="../../assets/productos.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Productos</h5>
+        <p class="card-text">Añade, modifica o elimina productos y medicinas para registrar movimientos</p>
+        <a class="btn btn-primary" (click)="goProductos()">Iniciar</a>
+      </div>
+    </div>
 
-<!-- <body>
+  </div>
+  
+<div class="row d-flex justify-content-around mt-5 mb-5">
+
+  <div class="card" style="width: 18rem;">
+    <img src="../../assets/agregar-inventario.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Ingreso de producto</h5>
+      <p class="card-text">Agrega productos al inventario</p>
+      <a class="btn btn-primary" (click)="ingreso()">Iniciar</a>
+    </div>
+  </div>
+  
+  <div class="card" style="width: 18rem;">
+    <img src="../../assets/despacho.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Despacho de productos</h5>
+      <p class="card-text">Registra el despacho de productos</p>
+      <a class="btn btn-primary" (click)="despacho()">Iniciar</a>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;">
+    <img src="../../assets/reportes.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Reportes</h5>
+      <p class="card-text">Consulta reportes y estadisticas</p>
+      <a class="btn btn-primary" (click)="reportes()">Iniciar</a>
+    </div>
+  </div>
+
+  </div> 
+
+  
+
+</div>
+
+  <!-- </div> -->
+  <!-- sidebar -->
+
+  <!-- <body>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="bootstrap" viewBox="0 0 118 94">
       <title>Bootstrap</title>

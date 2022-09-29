@@ -11,6 +11,11 @@ export class apiService {
     modificarServicio = this.url + '/updateService';
     nombreServicio = this.url + '/serviceByName';
     estado = this.url + '/updateState';
+
+    url_productos = this.url + '/productos';
+    url_inventario = this.url + '/inventario';
+    url_lotes = this.url + '/lotes/';
+    url_validar_despacho = this.url + '/validar_despacho';
     
 
     
@@ -18,6 +23,23 @@ export class apiService {
     options = {
         Authorization: this.token
     }
+
+    validarDespacho(body:any){
+        return this.httpClient.post(this.url_validar_despacho, body, {headers: this.options})
+    }
+
+    lotes(id_producto: number){
+        return this.httpClient.get(this.url_lotes+ id_producto, {headers: this.options})
+    }
+
+    productos(){
+        return this.httpClient.get(this.url_productos, {headers: this.options});
+    }
+
+    inventario(body: any){
+        return this.httpClient.post(this.url_inventario, body, {headers: this.options})
+    }
+
 
     services(){
         // return this.httpClient.get(this.allServices, {headers: this.options});
@@ -41,5 +63,7 @@ export class apiService {
         
         return this.httpClient.post(this.estado, body , {headers: this.options});
     }
+
+
 
 }

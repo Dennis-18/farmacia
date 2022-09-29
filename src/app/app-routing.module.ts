@@ -5,6 +5,9 @@ import { MenuComponent } from './menu/menu.component';
 import { MantenimientoEmpleadosComponent } from './empleados/mantenimiento-empleados/mantenimiento-empleados.component';
 import { MantenimientoProductosComponent } from './productos/mantenimiento-productos/mantenimiento-productos.component';
 import { MantenimientoServiciosComponent } from './servicios/mantenimiento-servicios/mantenimiento-servicios.component';
+import { DespachoComponent } from './despacho/despacho.component';
+import { IngresoComponent } from './ingreso/ingreso.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -12,7 +15,10 @@ const routes: Routes = [
   {path: 'menu',component: MenuComponent},
   {path: 'servicios', component: MantenimientoServiciosComponent},
   {path: 'productos', component: MantenimientoProductosComponent},
-  {path: 'empleados', component: MantenimientoEmpleadosComponent}
+  {path: 'empleados', component: MantenimientoEmpleadosComponent},
+  {path: 'despacho', component: DespachoComponent},
+  {path: 'ingreso', component: IngresoComponent},
+  {path: 'reportes', component: ReportesComponent}
 ];
 
 @NgModule({

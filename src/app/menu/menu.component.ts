@@ -24,4 +24,16 @@ export class MenuComponent implements OnInit {
   goProductos(){
     this.router.navigate(['/productos']);
   }
+
+  ingreso(){
+    this.router.navigate(['/ingreso']);
+  }
+
+  despacho(){
+    this.router.navigate(['/despacho']);
+  }
+
+  reportes(){
+    this.router.navigate(['/reportes']);
+  }
 }

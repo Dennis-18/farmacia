@@ -1,0 +1,59 @@
+<div>
+  <h1 class="text-center mt-5 mb-5">INGRESO DE PRODUCTOS</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <label for="descripcion">Selecciona producto</label>
+      <!-- <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="Nombre del producto" required> -->
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="ingreso_producto.id_producto" name="producto" id="producto">
+        <option *ngFor="let producto of datos_productos" [value]="producto.id_producto">{{producto.descripcion}}</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <label for="cantidad">Cantidad</label>
+      <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" required [(ngModel)]="ingreso_producto.cantidad">
+    </div>
+    <div class="col">
+      <label for="lote">Lote</label>
+      <input type="text" class="form-control" id="lote" name="lote" placeholder="Lote" required [(ngModel)]="ingreso_producto.lote">
+    </div>
+    <div class="col">
+      <label for="fecha_vencimiento">Fecha de vencimiento</label>
+      <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" required [(ngModel)]="ingreso_producto.fecha_vencimiento">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+
+<div>
+  <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" *ngIf="alerta == 1">
+    <strong>Inventario Actualizado</strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="alerta = 0"></button>
+  </div>
+
+  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert" *ngIf="alerta == 2">
+    <strong>Ocurrio un Error</strong> Inténtelo de nuevo 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="alerta = 0"></button>
+  </div>
+</div>
+
+  <div class="row mt-5 mb-5">
+    <div class="col d-flex justify-content-around">
+      <button class="btn btn-danger" (click)="salir()">Cancelar</button>
+      <button class="btn btn-primary" (click)="inventario()">Guardar</button>
+
+    </div>
+  </div>
+</div>

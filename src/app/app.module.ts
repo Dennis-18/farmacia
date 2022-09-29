@@ -11,14 +11,20 @@ import { EmpleadosModule } from './empleados/empleados.module';
 import { ProductosModule } from './productos/productos.module';
 import { ServiciosModule } from './servicios/servicios.module';
 import { apiService } from './login/api.service';
+import { DespachoModule } from './despacho/despacho.module';
+import { IngresoModule } from './ingreso/ingreso.module';
+import { ReportesModule } from './reportes/reportes.module';
+
+
 
 
 @NgModule({
-  declarations: [
+  declarations: [			
     AppComponent,
     LoginComponent,
-    MenuComponent,
-  ],
+    MenuComponent
+
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,7 +32,10 @@ import { apiService } from './login/api.service';
     ProductosModule,
     ServiciosModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DespachoModule,
+    IngresoModule,
+    ReportesModule
   ],
   providers: [apiService],
   bootstrap: [AppComponent]
