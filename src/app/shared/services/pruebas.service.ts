@@ -16,8 +16,9 @@ export class PruebasService {
   insertEmpleados: string = this.url + "/insertEmpleados";
   upEmpleados: string = this.url + "/updateEmpleadosId/";
   empleadoByName: string = this.url + "/empleadosByName";
-  
-  
+  upState: string = this.url + "/updateEmpleadosStatus/";
+
+
 
   token = localStorage.getItem('token') || 'token';
   options = {
@@ -38,19 +39,26 @@ export class PruebasService {
   }
 
   //insertar empleado
-  postEmpleados(cuerpo: any): Observable<empleados>{
-    return this.http.post<empleados>(this.insertEmpleados, cuerpo, { headers: this.options})
+  postEmpleados(cuerpo: any): Observable<empleados> {
+    return this.http.post<empleados>(this.insertEmpleados, cuerpo, { headers: this.options })
   }
 
   //acutalizar empleado
-  updateEmpleados(id:any, cuerpo:any):Observable<empleados>{
-    return this.http.put<empleados>(this.upEmpleados + id, cuerpo, {headers:this.options})
+  updateEmpleados(id: any, cuerpo: any): Observable<empleados> {
+    return this.http.put<empleados>(this.upEmpleados + id, cuerpo, { headers: this.options })
   }
 
 
-  searchByName(nombre:any): Observable<empleados[]>{
+  searchByName(nombre: any): Observable<empleados[]> {
     return this.http.post<empleados[]>(this.empleadoByName, nombre, { headers: this.options })
   }
+
+
+  updateState(id: any, cuerpo:any){
+    console.log(this.upState + id);
+    return this.http.put(this.upState + id, cuerpo, {headers: this.options})
+  }
+
 
   protected handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -73,20 +81,20 @@ export class PruebasService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-//   //EJEMPLOOOOS ANDRES 
-//   get(): Observable<Empleados[]> {
-//     return this.http.get<Empleados[]>(this.url).pipe(
-//       catchError(this.handleError));
-//   }
+  //   //EJEMPLOOOOS ANDRES 
+  //   get(): Observable<Empleados[]> {
+  //     return this.http.get<Empleados[]>(this.url).pipe(
+  //       catchError(this.handleError));
+  //   }
 
-//   post(hero: Empleados): Observable<Empleados> {
-//     return this.http.post<Empleados>(this.url, hero, this.httpOptions)
-//       .pipe(
-//         catchError(this.handleError)
-//       );
-//   }
-
-
+  //   post(hero: Empleados): Observable<Empleados> {
+  //     return this.http.post<Empleados>(this.url, hero, this.httpOptions)
+  //       .pipe(
+  //         catchError(this.handleError)
+  //       );
+  //   }
 
 
- }
+
+
+}

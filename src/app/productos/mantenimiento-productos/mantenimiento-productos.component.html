@@ -1,3 +1,161 @@
-<p>
-  mantenimiento-productos works!
-</p>
+<h1 class="fw-bold mb-2 text-uppercase text-center mt-4">{{titulo}}</h1>
+
+
+<nav class="navbar mt-3" style="background-color: #e3f2fd;">
+  <div class="container">
+
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active" href="/menu">Menu</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Opciones</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Cerrar Sesion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ACA ES EL FORMULARIO  DE REGISTTRO -->
+
+<div class="container mt-5">
+  <form>
+
+    <form class="row g-3">
+
+      <div class="col-md-4">
+        <label class="form-label">Nombre Producto</label>
+        <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="nuevoProducto.descripcion" requried>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Precio Unitario
+        </label>
+        <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="nuevoProducto.precio_unitario">
+      </div>
+
+      
+<div class="row text-center">
+
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary mt-2 mr-3" *ngIf="insertar" (click)="insertProductos()"
+      style="margin-right: 6px;">{{text_btn}}</button>
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" *ngIf="alerta == 1">
+      <strong>{{text_alertas.texto_fuerte}}</strong> {{text_alertas.texto_normal}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+
+    <button class="btn btn-danger mt-2 ml-3 " (click)="
+          nuevoProducto= {id:0, descripcion: '', precio_unitario: '', fecha: ''};
+          text_btn ='Agregar';
+        ">Limpiar campos</button>
+
+        <button type = "submit" class="btn btn-primary mt-2 mr-3" (click)="actualizarProducto()" style="margin-left: 6px;"> Modificar </button>
+
+  </div>
+
+</div>
+
+      <!-- <div class="col d-flex justify-content-around mt-5 mb-3"> -->
+
+
+
+
+      <!-- </div> -->
+
+    </form>
+
+    <hr>
+
+  </form>
+  <!-- INICIA LA TABLA DE ULTIMOS REGISTROS -->
+
+  <h2 class="mt-4 text-center">PRODUCTOS REGISTRADOS</h2>
+
+  <!-- barra de busqueda  -->
+   <div class="input-group mb-3">
+   
+    <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)] = "nuevoProductoBusqueda.descripcion" placeholder="Ingrese el nombre del producto" >
+
+    <button class="btn btn-outline-secondary" (click)="getProductos()"
+    
+      >X</button>
+
+      <button type="submit" class="btn btn-primary" (click)="buscarProductos()" style="margin-right: 6px;">Buscar</button>
+  </div> 
+
+
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">MEDICAMENTO</th>
+        <th scope="col">PRECIO UNITARIO</th>
+        <th scope="col">FECHA AGREGADA</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor=" let elemento of datos let i = index"> -->
+      <tr *ngFor="let producto of productos2 | paginate: {itemsPerPage: 5, currentPage: page} let i = index ">
+        <th>{{producto.id_producto}}</th>
+        <td scope="row">{{producto.descripcion}}</td>
+        <td scope="row">{{producto.precio_unitario}}</td>
+        <td scope="row">{{producto.fecha_registro}}</td>
+
+        <td>
+          <div class="d-flex justify-content-evenly">
+            <button class="btn btn-info" (click)="
+            nuevoProducto.id = producto.id_producto;
+            nuevoProducto.descripcion = producto.descripcion;
+            nuevoProducto.precio_unitario = producto.precio_unitario;
+            nuevoProducto.fecha = producto.fecha_registro;
+            insertar = false
+
+            ">
+              Editar
+            </button>
+            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="nuevoProducto.descripcion = producto.descripcion;
+                     nuevoProducto.id = producto.id_producto">Eliminar
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+
+  </pagination-controls>
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Eliminar Producto?:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p> <strong> {{nuevoProducto.descripcion}}</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="eliminar()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class=" row justify-content-center mt-4">
+  <button class="btn btn-secondary col-sm-2 btn-lg " (click)="salir()">Salir</button>
+</div>

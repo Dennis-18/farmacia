@@ -38,6 +38,32 @@ export class MantenimientoEmpleadosComponent {
     id_tipo_usuario: 0,
   }
 
+  public body= {
+    id: '',
+    nombre: '',
+    apellido: '',
+    fecha_nacimiento: '',
+    dpi: '',
+    renglon: '',
+    telefono: '',
+    correo: '',
+    password: '',
+    id_tipo_usuario: ''
+  }
+
+  public nuevoEmpleado2= {
+    nombre: '',
+    apellido: '',
+    fecha_nacimiento: '',
+    dpi: '',
+    renglon: '',
+    telefono: '',
+    correo: '',
+    password: '',
+    id_tipo_usuario: ''
+  }
+
+
   public nuevoEmpleadoBusqueda = {
     id: 0,
     nombre: '',
@@ -167,42 +193,42 @@ export class MantenimientoEmpleadosComponent {
   }
 
 
-  //en este metodo se va enviar la nueva informacion para actualizar el registro seleccionado
-  updateEmmpleado() {
-    if (this.nuevoEmpleado.nombre == null || this.nuevoEmpleado.nombre == null) {
-      //alerta, no se debe dejar vacio el campo
-    }
-    else {
-      try {
-        this.nuevoEmpleado = {
-          id: 0,
-          nombre: '',
-          apellido: 'Marroquin',
-          fecha_nacimiento: '1/1/1999',
-          dpi: 23342342334,
-          renglon: 23,
-          telefono: 32345345,
-          correo: 'dennis@',
-          password: 'digitador',
-          id_tipo_usuario: 1,
-        }
-        this.alerta = 1;
+  // //en este metodo se va enviar la nueva informacion para actualizar el registro seleccionado
+  // updateEmmpleado() {
+  //   if (this.nuevoEmpleado.nombre == null || this.nuevoEmpleado.nombre == null) {
+  //     //alerta, no se debe dejar vacio el campo
+  //   }
+  //   else {
+  //     try {
+  //       this.nuevoEmpleado = {
+  //         id: 0,
+  //         nombre: '',
+  //         apellido: 'Marroquin',
+  //         fecha_nacimiento: '1/1/1999',
+  //         dpi: 23342342334,
+  //         renglon: 23,
+  //         telefono: 32345345,
+  //         correo: 'dennis@',
+  //         password: 'digitador',
+  //         id_tipo_usuario: 1,
+  //       }
+  //       this.alerta = 1;
 
-        this.text_alertas = {
-          texto_fuerte: 'Actualizacion exitosa',
-          texto_normal: ''
-        }
-        setTimeout(() => {
-          this.alerta = 0;
-        }, 2500)
+  //       this.text_alertas = {
+  //         texto_fuerte: 'Actualizacion exitosa',
+  //         texto_normal: ''
+  //       }
+  //       setTimeout(() => {
+  //         this.alerta = 0;
+  //       }, 2500)
 
-        this.text_btn = 'Agregar'
-      } catch (error) {
-        console.log(error);
-      }
-    }
+  //       this.text_btn = 'Agregar'
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
 
-  }
+  // }
 
   buscarEmpleados(){
     let busqueda = {
@@ -223,9 +249,25 @@ export class MantenimientoEmpleadosComponent {
   }
 
 
-  eliminar(){
+  eliminar() {
+    this.empleadosSvc.updateState(this.nuevoEmpleado.id, this.body).subscribe((data: any) => {
+      console.log(data.id);
+      if (data.id == 1) {
+        this.nuevoEmpleado.id;
+        this.alerta = 1;
 
+        this.text_alertas = {
+          texto_fuerte: 'Servicio eliminado de la lista',
+          texto_normal: ''
+        }
+        this.getEmpleados();
+        setTimeout(() => {
+          this.alerta = 0;
+        }, 2500)
+      }
+    })
   }
+
 
   salir(){
     this.router.navigate(['/menu']);
