@@ -24,7 +24,6 @@ export class MantenimientoProductosComponent  {
   fecha = this.anio + '-' + this.mes + '-' + this.dia; 
 
 
-  empleados: Empleados[]=[]; //array vacio 
   productos: Productos [] = [];
 
   public nuevoProducto = {
@@ -41,19 +40,6 @@ export class MantenimientoProductosComponent  {
     fecha: ''
   }
 
-  public nuevoEmpleado = {
-    id: 0,
-    nombre: '',
-    apellido: '',
-    fecha_nacimiento: '',
-    dpi: 0,
-    renglon: 0,
-    telefono: 0,
-    correo: '',
-    password: '',
-    id_tipo_usuario: 0,
-  }
-  
 
   public body= {
     id: 0,
@@ -76,18 +62,7 @@ export class MantenimientoProductosComponent  {
 
 
 
-  public nuevoEmpleadoBusqueda = {
-    id: 0,
-    nombre: '',
-    apellido: '',
-    fecha_nacimiento: '',
-    dpi: 0,
-    renglon: 0,
-    telefono: 0,
-    correo: '',
-    password: '',
-    id_tipo_usuario: 0,
-  }
+
 
 
   text_btn: string = 'Agregar';
@@ -258,18 +233,7 @@ export class MantenimientoProductosComponent  {
 
 }
 
-export interface Empleados {
-  id: number;
-  nombres: string;
-  apellidos: string;
-  fecha_nacimiento: string;
-  dpi: number;
-  renglon: number;
-  telefono: number;
-  correo: string;
-  password: string;
-  id_tipo_usuario: number;
-}
+
 
 export interface Productos {
   id: number;
