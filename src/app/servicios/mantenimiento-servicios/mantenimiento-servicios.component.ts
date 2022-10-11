@@ -81,18 +81,21 @@ export class MantenimientoServiciosComponent implements OnInit {
 
   //en este metodo se va enviar la nueva informacion para actualizar el registro seleccionado
   updateServicio() {
+    console.log('llega')
     if (this.nuevoServicio.descripcion == '' || this.nuevoServicio.descripcion == null) {
 
       //alerta, no se debe dejar vacio el campo
+      console.log('vacio');
     }
     else {
       try {
 
-        // console.log(this.body);
+        this.body.descripcion = this.nuevoServicio.descripcion;
+        console.log(this.body);
         
-
           //update
           this.apiService.updateService(this.body).subscribe((data: any) =>{
+            console.log(data);
             if(data.id == 1){
 
               //resultado exitoso

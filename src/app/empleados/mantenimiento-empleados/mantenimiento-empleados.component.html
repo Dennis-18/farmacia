@@ -5,12 +5,12 @@
   <div class="container">
 
     <ul class="nav justify-content-end">
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link active" href="/menu">Menu</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Opciones</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="#">Cerrar Sesion</a>
       </li>
@@ -72,10 +72,11 @@
         <label class="form-label">Tipo de usuario</label>
         <select id="id_tipo_usuario" name="id_tipo_usuario" class="form-select"
           [(ngModel)]="nuevoEmpleado.id_tipo_usuario">
-          <option selected>Seleccionar...</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
+          <option [value]="1">Administrador</option>
+          <option [value]="2">Auxiliar</option>
+          <option [value]="3">Asistente</option>
+          <option [value]="4">Supervisor</option>
+          <option [value]="5">Gerente</option>
 
         </select>
       </div>

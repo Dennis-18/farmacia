@@ -4,12 +4,12 @@
   <div class="container">
 
     <ul class="nav justify-content-end">
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link active" href="/menu">Menu</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Opciones</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="#">Cerrar Sesion</a>
       </li>
@@ -26,7 +26,6 @@
     <div class="input-group mb-3">
       <!-- <div class="form-control ">
       </div> -->
-<<<<<<< HEAD
         <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="nuevoServicio.descripcion" placeholder="Nombre del servicio" required>
         <button class="btn btn-outline-secondary"(click)="
           
@@ -43,8 +42,13 @@
           nuevoServicio.descripcion = '';
           cargarServicios()
         ">X</button>
-    </div>
 
+
+        
+    </div>
+    <button *ngIf="insertar == true" class="btn btn-primary" (click)="agregarServicio()">Agregar</button>
+    <button *ngIf="insertar == false" class="btn btn-primary" (click)="updateServicio()">Modificar</button>
+    
     <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" *ngIf="alerta == 1">
       <strong>{{text_alertas.texto_fuerte}}</strong> {{text_alertas.texto_normal}}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -69,7 +73,6 @@
     </thead>
     <tbody>
       <!-- <tr *ngFor=" let elemento of datos let i = index"> -->
-<<<<<<< HEAD
         <tr *ngFor="let servicio of servicios | paginate: {itemsPerPage: 5, currentPage: page} let i = index ">
         <th>{{servicio.id_servicio}}</th>
         <td scope="row">{{servicio.descripcion}}</td>

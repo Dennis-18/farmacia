@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
   
         this.api.auth(this.credenciales).subscribe((data:any) =>{
           if(data.id === 1){
+            localStorage.clear();
             //guardar token en local storage
             this.usuario = data.datos[0];
             console.log(this.usuario);
