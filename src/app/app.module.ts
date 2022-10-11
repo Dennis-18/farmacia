@@ -10,10 +10,14 @@ import { MenuComponent } from './menu/menu.component';
 import { EmpleadosModule } from './empleados/empleados.module';
 import { ProductosModule } from './productos/productos.module';
 import { ServiciosModule } from './servicios/servicios.module';
+
+import { PruebasService } from './shared/services/pruebas.service';
+
 import { apiService } from './login/api.service';
 import { DespachoModule } from './despacho/despacho.module';
 import { IngresoModule } from './ingreso/ingreso.module';
 import { ReportesModule } from './reportes/reportes.module';
+
 
 
 
@@ -26,6 +30,7 @@ import { ReportesModule } from './reportes/reportes.module';
 
    ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     EmpleadosModule,
@@ -37,7 +42,9 @@ import { ReportesModule } from './reportes/reportes.module';
     IngresoModule,
     ReportesModule
   ],
-  providers: [apiService],
+
+  providers: [PruebasService, apiService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
