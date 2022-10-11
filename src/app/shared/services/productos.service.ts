@@ -26,6 +26,8 @@ export class ProductosService {
     Authorization: this.token
   }
 
+ 
+
   getProducts(): Observable<productos[]>{
     return this.http.get<productos[]>(this.getProductos, {headers : this.options})
   }
@@ -35,7 +37,7 @@ export class ProductosService {
   }
 
   updateProducts(id:any, cuerpo:any): Observable<productos>{
-    return this.http.put<productos>(this.putProductos + id, cuerpo, {headers : this.options})
+    return this.http.put<productos>(this.putProductos + id, cuerpo,  {headers : this.options})
   }
 
   searchByName(descripcion:any): Observable<productos[]>{

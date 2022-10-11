@@ -14,6 +14,8 @@ export class MantenimientoProductosComponent  {
 
   titulo: string = 'Productos'
 
+  // id_usuario = localStorage.getItem('id_usuario')
+ idUs = localStorage.getItem('id_usuario') || 'id_usuario';
 
   date: Date = new Date();
   anio = this.date.getFullYear();
@@ -30,7 +32,8 @@ export class MantenimientoProductosComponent  {
     id: 0,
     descripcion : '',
     precio_unitario: '',
-    fecha: ''
+    fecha: '',
+    stock_min: 2
   }
 
   public nuevoProductoBusqueda = {
@@ -120,36 +123,58 @@ export class MantenimientoProductosComponent  {
 
   insertProductos(){
 
-    if(this.nuevoProducto.descripcion == null || this.nuevoProducto.precio_unitario == null){
-        
-      }else{
-        
-        
-        this.productosSvc.postProducts(this.nuevoProducto).subscribe(
-          (data:any) =>{
-            console.log(data);
-            
+    if(this.nuevoProducto.stock_min >=2){
+
+      if(this.nuevoProducto.descripcion == null || this.nuevoProducto.precio_unitario == null){
+          
+        }else{
+          
+          
+          this.productosSvc.postProducts(this.nuevoProducto).subscribe(
+            (data:any) =>{
+              console.log(data);
+              
+            }
+          )
+  
+          this.alerta = 1;
+          
+          this.text_alertas = {
+            texto_fuerte: 'Insercion exitosa',
+            texto_normal: ''
           }
-        )
-
-        this.alerta = 1;
-        
-        this.text_alertas = {
-          texto_fuerte: 'Insercion exitosa',
-          texto_normal: ''
+          setTimeout(()=>{
+            this.alerta = 0;
+          }, 2500)
+          
+          this.text_btn = 'Agregar'
+  
+          this.router.navigate(['/productos'])
+          .then(() => {
+            window.location.reload();
+          });
+  
         }
-        setTimeout(()=>{
-          this.alerta = 0;
-        }, 2500)
-        
-        this.text_btn = 'Agregar'
+    }
+    else{
+      this.alerta = 2;
+          
+          this.text_alertas = {
+            texto_fuerte: 'Debe ingresar al menos dos ',
+            texto_normal: ''
+          }
+          setTimeout(()=>{
+            this.alerta = 0;
+          }, 6500)
+          
+          this.text_btn = 'Agregar'
+  
+          this.router.navigate(['/productos'])
+          .then(() => {
+            window.location.reload();
+          });
+    }
 
-        this.router.navigate(['/productos'])
-        .then(() => {
-          window.location.reload();
-        });
-
-      }
       
     
   }
@@ -169,15 +194,15 @@ export class MantenimientoProductosComponent  {
               }
               
               )
-              this.alerta = 1;
+              this.alerta = 2;
                 
               this.text_alertas = {
-                texto_fuerte: 'Modificacion exitosa',
+                texto_fuerte: 'Ingrese al menos 2',
                 texto_normal: ''
               }
               setTimeout(()=>{
                 this.alerta = 0;
-              }, 2500)
+              }, 6500)
               
               this.text_btn = 'Agregar'
         
