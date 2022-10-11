@@ -34,6 +34,6 @@ export class MenuComponent implements OnInit {
   }
 
   reportes(){
-    this.router.navigate(['/reportes']);
+    this.router.navigate(['/reportes/dashboard']);
   }
 }

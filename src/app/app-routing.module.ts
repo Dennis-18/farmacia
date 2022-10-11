@@ -8,6 +8,11 @@ import { MantenimientoServiciosComponent } from './servicios/mantenimiento-servi
 import { DespachoComponent } from './despacho/despacho.component';
 import { IngresoComponent } from './ingreso/ingreso.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { DashboardComponent } from './reportes/dashboard/dashboard.component';
+import { DespachosComponent } from './reportes/despachos/despachos.component';
+import { ExistenciasComponent } from './reportes/existencias/existencias.component';
+import { MetricasComponent } from './reportes/metricas/metricas.component';
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -18,7 +23,13 @@ const routes: Routes = [
   {path: 'empleados', component: MantenimientoEmpleadosComponent},
   {path: 'despacho', component: DespachoComponent},
   {path: 'ingreso', component: IngresoComponent},
-  {path: 'reportes', component: ReportesComponent}
+  {path: 'reportes', component: ReportesComponent, children:[
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'r-despachos', component: DespachosComponent},
+    {path: 'existencias', component: ExistenciasComponent},
+    {path: 'metricas', component: MetricasComponent}
+  ]}
+  
 ];
 
 @NgModule({
