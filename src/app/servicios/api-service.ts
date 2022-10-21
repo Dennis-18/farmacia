@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class apiService {
@@ -32,9 +33,15 @@ export class apiService {
         return this.httpClient.get(this.url_lotes+ id_producto, {headers: this.options})
     }
 
-    productos(){
+    productos(): Observable<any>{
         return this.httpClient.get(this.url_productos, {headers: this.options});
     }
+
+    
+    // productos(){
+    //     return this.httpClient.get(this.url_productos, {headers: this.options});
+    // }
+
 
     inventario(body: any){
         return this.httpClient.post(this.url_inventario, body, {headers: this.options})

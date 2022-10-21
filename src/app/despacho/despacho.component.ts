@@ -61,9 +61,10 @@ fecha(){
 productos(){
   // this.alerta = 0;
   this.apiService.productos().subscribe((data:any) =>{
-    if(data.id == 1){
-      this.datos_productos = data.mensaje;
-      console.table(this.datos_productos);
+    // console.log(data);
+    if(data){
+      this.datos_productos = data;
+      // console.table(this.datos_productos);
     }
   })
   // console.log(data);
@@ -151,7 +152,7 @@ servicios(){
   this.apiService.services().subscribe((data:any) =>{
     if(data.id == 1){
       this.data_servicios = data.mensaje;
-      console.table(this.data_servicios);
+      // console.table(this.data_servicios);
     } else{
       console.log('no trajo nada esta madre: ' + data.mensaje);
     }

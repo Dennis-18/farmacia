@@ -1,17 +1,16 @@
 <div>
-  <h1 class="text-center">REPORTE DE EXISTENCIAS</h1>
-  <table class="table table-hover" id="tb-consumo" *ngIf="table">
+  <h1 class="text-center">REPORTE VALORIZADO</h1>
+  <table id="tb-valorizado" name="tb-valorizado" class="table table-hover"  *ngIf="table">
     <thead>
       <tr>
         <td></td>
-        <!-- <td *ngFor="let columna of columnas">{{columna.descripcion}}</td> -->
+        <td name="elemento" *ngFor="let columna of columnas">{{columna.descripcion}}</td>
 
       </tr>
     </thead>
     <tbody>
-      <tr>
-      <!-- <tr *ngFor="let dato of datos, let i = index" > -->
-        <!-- <td *ngFor="let elemento of dato">{{elemento}}</td> -->
+      <tr *ngFor="let dato of datos, let i = index" >
+        <td name="elemento" *ngFor="let elemento of dato">{{elemento}}</td>
 
       </tr>
     </tbody>

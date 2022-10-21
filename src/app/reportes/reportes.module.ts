@@ -11,8 +11,13 @@ import { ExistenciasComponent } from './existencias/existencias.component';
 import { MetricasComponent } from './metricas/metricas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReporteService } from './service';
+import { ConsumoComponent } from './consumo/consumo.component';
+import { KardexComponent } from './kardex/kardex.component';
+import { ValorizadoComponent } from './valorizado/valorizado.component';
 
-
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 @NgModule({
@@ -20,11 +25,16 @@ import { ReporteService } from './service';
     CommonModule,
     FormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+
+
     
   ],
-  declarations: [ReportesComponent, NavComponent,DashboardComponent,DespachosComponent, ExistenciasComponent,MetricasComponent],
+  declarations: [ReportesComponent, NavComponent,DashboardComponent,DespachosComponent, ExistenciasComponent,MetricasComponent, ConsumoComponent, KardexComponent,ValorizadoComponent],
   exports: [ReportesComponent],
-  providers: [ReporteService]
+  providers: [ReporteService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ReportesModule { }

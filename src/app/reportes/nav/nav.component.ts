@@ -29,4 +29,16 @@ export class NavComponent implements OnInit {
     this.router.navigate(['reportes/r-despachos']);
   }
 
+  goValorizado(){
+    this.router.navigate(['reportes/valorizado']);
+  }
+
+  goConsumo(){
+    this.router.navigate(['reportes/consumo']);
+  }
+
+  goKardex(){
+    this.router.navigate(['reportes/kardex']);
+  }
+
 }

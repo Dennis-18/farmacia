@@ -12,6 +12,9 @@ import { DashboardComponent } from './reportes/dashboard/dashboard.component';
 import { DespachosComponent } from './reportes/despachos/despachos.component';
 import { ExistenciasComponent } from './reportes/existencias/existencias.component';
 import { MetricasComponent } from './reportes/metricas/metricas.component';
+import { ValorizadoComponent } from './reportes/valorizado/valorizado.component';
+import { ConsumoComponent } from './reportes/consumo/consumo.component';
+import { KardexComponent } from './reportes/kardex/kardex.component';
 
 
 const routes: Routes = [
@@ -27,7 +30,10 @@ const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'r-despachos', component: DespachosComponent},
     {path: 'existencias', component: ExistenciasComponent},
-    {path: 'metricas', component: MetricasComponent}
+    {path: 'metricas', component: MetricasComponent},
+    {path: 'valorizado', component: ValorizadoComponent},
+    {path: 'consumo', component: ConsumoComponent},
+    {path: 'kardex', component: KardexComponent}
   ]}
   
 ];

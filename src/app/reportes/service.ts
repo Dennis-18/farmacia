@@ -12,10 +12,20 @@ export class ReporteService {
     private ruta = 'http://192.168.1.105:3000/';
     //variables de rutas
     private url_despachos_usuario = this.ruta + 'despachos_usuarios';
+    private url_consumo_servicios = this.ruta + 'consumo_servicios';
+    private url_valorizado = this.ruta + 'valorizado';
 
     //buscar cantidad de productos despachados por usuario.
     despachosUsuario(){
        return this.httpClient.get(this.url_despachos_usuario);
+    }
+
+    consumoServicios(){
+        return this.httpClient.get(this.url_consumo_servicios);
+    }
+
+    valorizado(){
+        return this.httpClient.get(this.url_valorizado);
     }
 
 }
