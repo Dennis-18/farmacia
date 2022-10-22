@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as xlsx from 'xlsx';
+import { ReporteService } from '../service';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-existencias',
   templateUrl: './existencias.component.html',
@@ -7,13 +9,18 @@ import * as xlsx from 'xlsx';
 })
 export class ExistenciasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ReporteService,
+    private spinner: NgxSpinnerService,
+    ) { }
 
   ngOnInit() {
+    this.existencias();
   }
 
   table = false;
+  inventario: any;
 
+  //funcion que toma los datos de la tabla html y los guarda en un archivo excel
   exportData(){
     try{
   
@@ -32,4 +39,23 @@ export class ExistenciasComponent implements OnInit {
     }
   }
 
+  //carga los datos de existencias de inventario desde la base de datos
+  existencias(){
+    console.log(`existencias`)
+    this.spinner.show('sp3');
+    try{
+      this.service.existencias().subscribe((data:any) => {
+        if(data.id == 1){
+          this.table = true;
+          console.log(`hay existencias`)
+          this.inventario = data.mensaje;
+          this.spinner.hide('sp3');
+          // console.log(this.inventario);
+        }
+      })
+    } catch(error){
+      this.spinner.hide('sp3');
+      console.log(`error en existencias: ${error}`)
+    }
+  }
 }

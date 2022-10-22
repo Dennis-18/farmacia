@@ -3,13 +3,22 @@
   <table class="table table-hover" id="tb-consumo" *ngIf="table">
     <thead>
       <tr>
-        <td></td>
+        <th>PRODUCTO</th>
+        <th>LOTE</th>
+        <th>PRECIO UNITARIO</th>
+        <th>FECHA DE CADUCIDAD</th>
+        <th>CANTIDAD EN EXISTENCIA</th>
         <!-- <td *ngFor="let columna of columnas">{{columna.descripcion}}</td> -->
 
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let producto of inventario">
+        <td>{{producto.producto}}</td>
+        <td>{{producto.lote}}</td>
+        <td>{{producto.precio_unitario | currency: 'Q'}}</td>
+        <td>{{producto.fecha_vencimiento | date: 'yyyy-MM-dd'}}</td>
+        <td>{{producto.cantidad_actual}}</td>
       <!-- <tr *ngFor="let dato of datos, let i = index" > -->
         <!-- <td *ngFor="let elemento of dato">{{elemento}}</td> -->
 

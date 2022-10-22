@@ -1,3 +1,40 @@
-<p>
-  despachos works!
-</p>
+<div>
+  <h1 class="text-center">REPORTE DE DESPACHOS</h1>
+  <table class="table table-hover" id="tb-despachos" *ngIf="table">
+    <thead>
+      <tr>
+        <th>PRODUCTO</th>
+        <th>LOTE</th>
+        <th>SERVICIO</th>
+        <th>CANTIDAD</th>
+        <th>NUMERO DE REFERENCIA</th>
+        <th>FECHA DE REGISTRO</th>
+        <th>USUARIO</th>
+        <!-- <td *ngFor="let columna of columnas">{{columna.descripcion}}</td> -->
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let despacho of despachos">
+        <td>{{despacho.producto}}</td>
+        <td>{{despacho.lote}}</td>
+        <td>{{despacho.servicio}}</td>
+        <td>{{despacho.cantidad}}</td>
+        <td>{{despacho.no_referencia}}</td>
+        <td>{{despacho.fecha_registro | date: 'yyyy-MM-dd HH:MM'}}</td>
+        <td>{{despacho.usuario}}</td>
+      <!-- <tr *ngFor="let dato of datos, let i = index" > -->
+        <!-- <td *ngFor="let elemento of dato">{{elemento}}</td> -->
+
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-success" (click)="exportData()">Exportar Excel</button>
+  </div>
+
+  <ngx-spinner name="sp3" [fullScreen]="false" type="ball-spin-clockwise" size="medium"><p style="font-size: 20px; color: white">Cargando informacion...</p></ngx-spinner>
+
+
+</div>

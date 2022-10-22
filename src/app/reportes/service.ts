@@ -14,6 +14,8 @@ export class ReporteService {
     private url_despachos_usuario = this.ruta + 'despachos_usuarios';
     private url_consumo_servicios = this.ruta + 'consumo_servicios';
     private url_valorizado = this.ruta + 'valorizado';
+    private url_existencia = this.ruta + 'existenciasInventario';
+    private url_historial_despachos = this.ruta + 'historialDespachos';
 
     //buscar cantidad de productos despachados por usuario.
     despachosUsuario(){
@@ -26,6 +28,14 @@ export class ReporteService {
 
     valorizado(){
         return this.httpClient.get(this.url_valorizado);
+    }
+
+    existencias(){
+        return this.httpClient.get(this.url_existencia);
+    }
+
+    historialDespachos(){
+        return this.httpClient.get(this.url_historial_despachos);
     }
 
 }
