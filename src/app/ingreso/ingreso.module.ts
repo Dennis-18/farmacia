@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { apiService } from '../servicios/api-service';
+
+//rutas
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   imports: [
     CommonModule,
@@ -13,6 +16,6 @@ import { apiService } from '../servicios/api-service';
   ],
   declarations: [IngresoComponent],
   exports: [IngresoComponent],
-  providers: [HttpClientModule, apiService]
+  providers: [HttpClientModule, apiService, {provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class IngresoModule { }

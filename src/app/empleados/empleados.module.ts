@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from '../app-routing.module';
 
-
+//rutas
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     MantenimientoEmpleadosComponent
@@ -21,6 +22,7 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     FormsModule,
     NgxPaginationModule
-  ]
+  ],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class EmpleadosModule { }

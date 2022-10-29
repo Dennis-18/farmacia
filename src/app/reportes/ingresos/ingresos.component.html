@@ -1,0 +1,34 @@
+<div>
+  <h1 class="text-center mt-4">REPORTE DE INGRESOS</h1>
+
+  <table class="table table-hover" id="tb-ingresos" *ngIf="table">
+    <thead>
+      <tr>
+        <th>PRODUCTO</th>
+        <th>LOTE</th>
+        <th>CANTIDAD</th>
+        <th>FECHA DE REGISTRO</th>
+        <th>USUARIO</th>
+        <!-- <td *ngFor="let columna of columnas">{{columna.descripcion}}</td> -->
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ingreso of ingresos">
+        <td>{{ingreso.producto}}</td>
+        <td>{{ingreso.lote}}</td>
+        <td>{{ingreso.cantidad}}</td>
+        <td>{{ingreso.fecha_registro | date: 'yyyy-MM-dd HH:MM'}}</td>
+        <td>{{ingreso.usuario}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-success" (click)="exportData()">Exportar Excel</button>
+  </div>
+
+  <ngx-spinner name="sp3" [fullScreen]="false" type="ball-spin-clockwise" size="medium"><p style="font-size: 20px; color: white">Cargando informacion...</p></ngx-spinner>
+
+
+</div>

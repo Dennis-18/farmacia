@@ -1,0 +1,84 @@
+<div class="container">
+  <h1 class="text-center mt-4">AJUSTES DE INVENTARIO</h1>
+
+  <div class="row mt-3 mb-3">
+    <div class="col">
+      <label for="descripcion">Producto</label>
+      <!-- <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="Nombre del producto" required> -->
+      <select class="form-select" aria-label="Default select example" name="productos" id="productos"
+        [(ngModel)]="ajuste.id_producto" (change)="getLotes($event)">
+        <!-- <option *ngFor="let producto of productos">{{producto.descripcion}}</option> -->
+        <option *ngFor="let producto of productos" [value]="producto.id_producto">{{producto.descripcion}}</option>
+      </select>
+
+
+
+    </div>
+    <div class="col ">
+      <label for="descripcion">Lote</label>
+      <!-- <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="Nombre del producto" required> -->
+      <select class="form-select" aria-label="Default select example" name="lote" id="lote" [disabled]="lote" [(ngModel)]="ajuste.lote">
+        <option *ngFor="let lote of data_lotes" [value]="lote.lote">{{lote.lote}}</option>
+      </select>
+    </div>
+
+    <div class="col">
+      <label for="descripcion">Tipo de Ajuste</label>
+      <!-- <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="Nombre del producto" required> -->
+      <select class="form-select" aria-label="Default select example" name="tipo_ajuste" id="tipo_ajuste"
+        [(ngModel)]="ajuste.tipo_ajuste">
+        <option *ngFor="let tipo of tipos_movimiento" [value]="tipo.value">{{tipo.descripcion}}</option>
+      </select>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col">
+
+        <label for="cantidad">Cantidad</label>
+        
+        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" required [(ngModel)]="ajuste.cantidad_ajuste">
+      </div>
+    </div>
+
+    <div class="row mt-5 mb-3">
+      <div class="col d-flex justify-content-evenly">
+        <button class="btn btn-secondary" (click)="salir()" >Salir</button>
+        <button class="btn btn-success" (click)="guardarAjuste()">Guardar</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- tabla que muestra los ajustes realizados -->
+  <div>
+    <table class="table table-hover" id="tb-consumo" *ngIf="table">
+      <thead>
+        <tr>
+          <th>PRODUCTO</th>
+          <th>LOTE</th>
+          <th>FECHA/HORA DE MOVIMIENTO</th>
+          <th>CANTIDAD DE AJUSTE</th>
+          <th>TIPO DE AJUSTE</th>
+          <th>USUARIO</th>
+          <!-- <td *ngFor="let columna of columnas">{{columna.descripcion}}</td> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ajuste of ajustes">
+          <td>{{ajuste.producto}}</td>
+          <td>{{ajuste.lote}}</td>
+          <td>{{ajuste.fecha_movimiento | date: 'yyyy-mm-dd hh:mm:ss'}}</td>
+          <td>{{ajuste.cantidad}}</td>
+          <td>{{ajuste.tipo_ajuste}}</td>
+          <td>{{ajuste.usuario}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <!-- <ngx-spinner name="sp3" [fullScreen]="false" type="ball-spin-clockwise" size="medium"><p style="font-size: 20px; color: white">Cargando informacion...</p></ngx-spinner> -->
+
+  </div>
+  <ngx-spinner name="sp" [fullScreen]="false" type="ball-spin-clockwise" size="medium">
+    <p style="font-size: 20px; color: white">Cargando informacion...</p>
+  </ngx-spinner>
+</div>

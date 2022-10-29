@@ -9,13 +9,20 @@ export class ReporteService {
     constructor(private httpClient: HttpClient){
         
     }
-    private ruta = 'http://192.168.1.105:3000/';
+    private ruta = 'http://localhost:3000/';
     //variables de rutas
     private url_despachos_usuario = this.ruta + 'despachos_usuarios';
     private url_consumo_servicios = this.ruta + 'consumo_servicios';
     private url_valorizado = this.ruta + 'valorizado';
     private url_existencia = this.ruta + 'existenciasInventario';
     private url_historial_despachos = this.ruta + 'historialDespachos';
+    private url_ingresos_inventario = this.ruta + 'ingresosInventario';
+
+    //token
+    token = localStorage.getItem('token') || 'token';
+    options = {
+        Authorization: this.token
+    }
 
     //buscar cantidad de productos despachados por usuario.
     despachosUsuario(){
@@ -36,6 +43,14 @@ export class ReporteService {
 
     historialDespachos(){
         return this.httpClient.get(this.url_historial_despachos);
+    }
+
+    historialIngresos(){
+        return this.httpClient.get(this.url_ingresos_inventario, {headers: this.options});
+    }
+
+    historialAjustes(){
+
     }
 
 }

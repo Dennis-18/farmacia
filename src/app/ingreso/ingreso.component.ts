@@ -51,8 +51,10 @@ fecha(){
 
 productos(){
   this.apiService.productos().subscribe((data:any) =>{
-    if(data.id == 1){
-      this.datos_productos = data.mensaje;
+    // console.log(data);
+    if(data){
+      console.log('hay productos');
+      this.datos_productos = data;
     }
   })
   // console.log(data);

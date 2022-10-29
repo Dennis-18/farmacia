@@ -4,7 +4,8 @@ import { MantenimientoProductosComponent } from './mantenimiento-productos/mante
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from '../app-routing.module';
-
+//rutas
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [MantenimientoProductosComponent],
   imports: [
@@ -15,6 +16,7 @@ import { AppRoutingModule } from '../app-routing.module';
   ],
   exports: [
     MantenimientoProductosComponent
-  ]
+  ],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class ProductosModule { }

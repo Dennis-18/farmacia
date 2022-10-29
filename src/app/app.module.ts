@@ -17,9 +17,7 @@ import { apiService } from './login/api.service';
 import { DespachoModule } from './despacho/despacho.module';
 import { IngresoModule } from './ingreso/ingreso.module';
 import { ReportesModule } from './reportes/reportes.module';
-
-
-
+import { AjustesInventarioModule } from './Ajustes-inventario/Ajustes-inventario.module';
 
 
 @NgModule({
@@ -40,7 +38,8 @@ import { ReportesModule } from './reportes/reportes.module';
     HttpClientModule,
     DespachoModule,
     IngresoModule,
-    ReportesModule
+    ReportesModule,
+    AjustesInventarioModule
   ],
 
   providers: [PruebasService, apiService],

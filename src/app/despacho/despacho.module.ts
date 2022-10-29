@@ -6,7 +6,8 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { apiService } from '../login/api.service';
 
-
+//rutas
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +16,6 @@ import { apiService } from '../login/api.service';
   ],
   declarations: [DespachoComponent],
   exports: [DespachoComponent],
-  providers: [HttpClientModule, apiService]
+  providers: [HttpClientModule, apiService,{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class DespachoModule { }

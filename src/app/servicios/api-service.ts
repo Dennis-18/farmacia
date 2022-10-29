@@ -18,7 +18,9 @@ export class apiService {
     url_lotes = this.url + '/lotes/';
     url_validar_despacho = this.url + '/validar_despacho';
     
-
+    //guardar un ajuste de inventario
+    url_ajuste_inventario = this.url + '/ajusteInventario'
+    url_get_ajustes = this.url + '/get-ajustes'
     
     token = localStorage.getItem('token') || 'token';
     options = {
@@ -72,5 +74,15 @@ export class apiService {
     }
 
 
+    //registra un ajuste de inventario
+    ajusteInventario(body:any){
+        return this.httpClient.post(this.url_ajuste_inventario, body, {headers:this.options});
+
+    }
+
+    //obtener ajustes de inventario realizados anteriormente
+    obtenerAjustes(){
+        return this.httpClient.get(this.url_get_ajustes, {headers: this.options});
+    }
 
 }

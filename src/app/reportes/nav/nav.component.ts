@@ -41,4 +41,8 @@ export class NavComponent implements OnInit {
     this.router.navigate(['reportes/kardex']);
   }
 
+  goIngresos(){
+    this.router.navigate(['reportes/ingresos'])
+  }
+
 }

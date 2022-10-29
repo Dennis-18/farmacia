@@ -33,7 +33,7 @@ export class ExistenciasComponent implements OnInit {
       const book: xlsx.WorkBook = xlsx.utils.book_new();
       xlsx.utils.book_append_sheet(book, worksheet, 'Sheet1');
   
-      xlsx.writeFile(book, 'Consumo.xlsx');
+      xlsx.writeFile(book, 'Existencias.xlsx');
     } catch(error){
       console.log('error exportar archivo: ' + error);
     }
