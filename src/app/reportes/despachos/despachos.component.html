@@ -1,61 +1,65 @@
-<div>
+<div class="container">
   <h1 class="text-center mt-4">REPORTE DE DESPACHOS</h1>
-
-  <!-- <div class="row mt-3 mb-3">
-    <div class="col">
-      <label for="cantidad">Fecha Inicio</label>
-      <input type="date" class="form-control" id="fecha1" name="fecha1" placeholder="Fecha" required>
-
-    </div>
-    <div class="col">
-      <label for="cantidad">Fecha Fin</label>
-      <input type="date" class="form-control" id="fecha2" name="fecha2" placeholder="Fecha2" required>
-    </div>
-    <div class="col">
-      <label for="descripcion">Servicio</label>
-      <select class="form-select" aria-label="Default select example"  name="servicio" id="servicio" >
-        <option></option>
+  <div class="row">
+    <div class="col-auto">
+      <label class="form-label" for="descripcion">Selecciona producto</label>
+      <!-- <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="Nombre del producto" required> -->
+      <select class="form-select" 
+      aria-label="Default select example"  
+      name="producto" 
+      id="producto" 
+      [(ngModel)]="producto.id_producto"
+      (change)="despachosFiltrados($event);">
+        <option *ngFor="let producto of productos" 
+        [value]="producto.id_producto" >{{producto.descripcion}}</option>
       </select>
     </div>
-    <div class="col">
-      <label for="descripcion">Usuario</label>
-      <select class="form-select" aria-label="Default select example"  name="servicio" id="servicio">
-        <option></option>
-      </select>
+
+
+    <div class="col-auto">
+        <label class="form-label">Fecha Inicio</label>
+        <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio"
+         [(ngModel)]="producto.fecha_inicio" (change)="despachosFiltrados($event)">
     </div>
-    
 
-  </div> -->
+    <div class="col-auto">
+      <label class="form-label">Fecha Fin</label>
+      <input type="date" class="form-control" id="fecha_fin" name="fecha_fin"
+      [(ngModel)]="producto.fecha_fin" (change)="despachosFiltrados($event)" >
+  </div>
+  <div class="row">
+    <h2 class="text-center" *ngIf="!table">No hay resultados para la busqueda</h2>
+    <table class="table table-hover" id="tb-despachos" *ngIf="table">
+      <thead>
+        <tr>
+          <th>PRODUCTO</th>
+          <th>LOTE</th>
+          <th>SERVICIO</th>
+          <th>CANTIDAD</th>
+          <th>NUMERO DE REFERENCIA</th>
+          <th>FECHA DE REGISTRO</th>
+          <th>USUARIO</th>
+          <!-- <td *ngFor="let columna of columnas">{{columna.descripcion}}</td> -->
+  
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let despacho of despachos">
+          <td>{{despacho.producto}}</td>
+          <td>{{despacho.lote}}</td>
+          <td>{{despacho.servicio}}</td>
+          <td>{{despacho.cantidad}}</td>
+          <td>{{despacho.no_referencia}}</td>
+          <td>{{despacho.fecha_registro | date: 'yyyy-MM-dd HH:MM'}}</td>
+          <td>{{despacho.usuario}}</td>
+        <!-- <tr *ngFor="let dato of datos, let i = index" > -->
+          <!-- <td *ngFor="let elemento of dato">{{elemento}}</td> -->
+  
+        </tr>
+      </tbody>
+    </table>
 
-  <table class="table table-hover" id="tb-despachos" *ngIf="table">
-    <thead>
-      <tr>
-        <th>PRODUCTO</th>
-        <th>LOTE</th>
-        <th>SERVICIO</th>
-        <th>CANTIDAD</th>
-        <th>NUMERO DE REFERENCIA</th>
-        <th>FECHA DE REGISTRO</th>
-        <th>USUARIO</th>
-        <!-- <td *ngFor="let columna of columnas">{{columna.descripcion}}</td> -->
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let despacho of despachos">
-        <td>{{despacho.producto}}</td>
-        <td>{{despacho.lote}}</td>
-        <td>{{despacho.servicio}}</td>
-        <td>{{despacho.cantidad}}</td>
-        <td>{{despacho.no_referencia}}</td>
-        <td>{{despacho.fecha_registro | date: 'yyyy-MM-dd HH:MM'}}</td>
-        <td>{{despacho.usuario}}</td>
-      <!-- <tr *ngFor="let dato of datos, let i = index" > -->
-        <!-- <td *ngFor="let elemento of dato">{{elemento}}</td> -->
-
-      </tr>
-    </tbody>
-  </table>
+  </div>
 
   <div class="d-flex justify-content-center">
     <button class="btn btn-success" (click)="exportData()">Exportar Excel</button>

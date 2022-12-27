@@ -13,6 +13,7 @@ export class MantenimientoEmpleadosComponent {
 
   titulo: string = 'Empleados'
 
+  modificar: boolean = false; //define si se muestra el boton de modificar
 
   date: Date = new Date();
   anio = this.date.getFullYear();
@@ -110,12 +111,19 @@ export class MantenimientoEmpleadosComponent {
   //todos los empleados
   getEmpleados():void{    
 
-    this.empleadosSvc.getAllEmpleados().subscribe(res =>{
-      this.empleados2 = res
-    }, error =>{
-      console.log(error)
-    })
+    // this.empleadosSvc.getAllEmpleados().subscribe((res:any) =>{
+    //   console.log(res);
+    //   this.empleados2 = res;
+    // }, error =>{
+    //   console.log(error)
+    // })
 
+    this.empleadosSvc.getAllEmpleados().subscribe((data:any) => {
+      console.log(data);
+      if(data){
+        this.empleados2 = data;
+      }
+    })
 
   }
 
@@ -184,6 +192,8 @@ export class MantenimientoEmpleadosComponent {
               }, 2500)
               
               this.text_btn = 'Agregar'
+              this.modificar = false;
+              this.insertar = true;
         
               this.router.navigate(['/empleados'])
               .then(() => {

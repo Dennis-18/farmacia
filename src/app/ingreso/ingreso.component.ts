@@ -28,7 +28,8 @@ ingreso_producto = {
   usuario: localStorage.getItem('id_usuario'),
   tipo_movimiento: 1,
   lote: '',
-  fecha_vencimiento: ''
+  fecha_vencimiento: '',
+  id_turno: localStorage.getItem('id_turno')
 }
 
 datos_productos: any;
@@ -43,9 +44,8 @@ fecha(){
   let hour = date.getHours();
   let minute = date.getMinutes();
   let secods = date.getSeconds();
-  let miliSeconds = date.getMilliseconds();
 
-  let timestamp = year+'-'+month+'-'+day+' ' + hour + ':'+minute +':'+secods+'.'+miliSeconds;
+  let timestamp = year+'-'+month+'-'+day+' ' + hour + ':'+minute +':'+secods;
   this.ingreso_producto.fecha_hora = timestamp;
 }
 
@@ -81,7 +81,8 @@ inventario(){
         usuario: localStorage.getItem('id_usuario'),
         tipo_movimiento: 1,
         lote: '',
-        fecha_vencimiento: ''
+        fecha_vencimiento: '',
+        id_turno: localStorage.getItem('id_turno')
       }
 
 

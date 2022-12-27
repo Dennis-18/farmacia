@@ -22,6 +22,7 @@ export class AjustesInventarioComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.obtenerAjustes();
+    this.ajuste.id_turno = localStorage.getItem('id_turno');
   }
   //muestra o no la tabla dependiendo de su valor
   table: boolean = false;
@@ -34,7 +35,8 @@ export class AjustesInventarioComponent implements OnInit {
     cantidad_ajuste: 0,
     tipo_ajuste: 0,
     descripcion: '',
-    usuario: '0'
+    usuario: '0',
+    id_turno: localStorage.getItem('id_turno')
   }
 
   //guarda los tipos de movimientos posibles para los ajustes
@@ -102,7 +104,10 @@ export class AjustesInventarioComponent implements OnInit {
           this.ajustes = data.mensaje;
           this.spinner.hide('sp');
           this.table = true;
-        } else{
+        } else if(data.id == 3){
+          this.spinner.hide('sp');
+        }
+        else{
           this.spinner.hide('sp');
           this.error();
         }
@@ -158,7 +163,8 @@ export class AjustesInventarioComponent implements OnInit {
             cantidad_ajuste: 0,
             tipo_ajuste: 3,
             descripcion: '',
-            usuario: '0'
+            usuario: '0',
+            id_turno: localStorage.getItem('id_turno')
           }
 
           this.notifi();
@@ -214,5 +220,6 @@ interface ajuste {
   cantidad_ajuste: number,
   tipo_ajuste: number,
   descripcion: string,
-  usuario: string | null
+  usuario: string | null,
+  id_turno: string | null
 }

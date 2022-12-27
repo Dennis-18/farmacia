@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { filter } from 'rxjs';
 import { apiService } from '../servicios/api-service';
 
 @Component({
@@ -31,7 +30,8 @@ export class DespachoComponent implements OnInit {
     fecha_vencimiento: '',
     id_servicio: 0,
     unidad_medida: '',
-    no_referencia: ''
+    no_referencia: '',
+    id_turno: localStorage.getItem('id_turno')
   }
   precio_total:number = 0;
   datos_productos: any;
@@ -92,7 +92,8 @@ inventario(){
         fecha_vencimiento: '',
         id_servicio: 0,
         unidad_medida: '',
-        no_referencia: ''
+        no_referencia: '',
+        id_turno: localStorage.getItem('id_turno')
       }
 
 

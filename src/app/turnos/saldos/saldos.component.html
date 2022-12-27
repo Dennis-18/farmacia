@@ -1,0 +1,40 @@
+<div class="container">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <!-- producto, cantidad_inicial, precio_u, precio, 
+                suma, resta, ingresos, egresos, cantidad_actual, 
+                precio_unitario, precio_final -->
+                <td>MEDICAMENTO</td>
+                <td >SALDO INICIAL</td>
+                <td >PRECIO U</td>
+                <td >PRECIO</td>
+                <td >AJUSTE SUMA</td>
+                <td >AJUSTE RESTA</td>
+                <td >INGRESO</td>
+                <td >EGRESO</td>
+                <td >INVENTARIO</td>
+                <td >PRECIO U</td>
+                <td >PRECIO</td>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- producto, cantidad_inicial, precio_u, precio, 
+                suma, resta, ingresos, egresos, cantidad_actual, 
+                precio_unitario, precio_final -->
+            <tr *ngFor=" let registro of registros">
+                <td>{{registro.producto}}</td>
+                <td>{{registro.cantidad_inicial}}</td>
+                <td>{{registro.precio_u}}</td>
+                <td>{{registro.precio}}</td>
+                <td>{{registro.suma}}</td>
+                <td>{{registro.resta}}</td>
+                <td>{{registro.ingresos}}</td>
+                <td>{{registro.egresos}}</td>
+                <td>{{registro.cantidad_actual}}</td>
+                <td>{{registro.precio_unitario}}</td>
+                <td>{{registro.precio_final}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

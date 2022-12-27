@@ -18,14 +18,21 @@ import { DespachoModule } from './despacho/despacho.module';
 import { IngresoModule } from './ingreso/ingreso.module';
 import { ReportesModule } from './reportes/reportes.module';
 import { AjustesInventarioModule } from './Ajustes-inventario/Ajustes-inventario.module';
+import { TurnosComponent } from './turnos/turnos.component';
+import { TurnoComponent } from './turno/turno.component';
+import { service } from './turnos/service';
+import { ApiRoute } from './api-route';
+import { SaldosComponent } from './turnos/saldos/saldos.component';
 
 
 @NgModule({
-  declarations: [			
+  declarations: [					
     AppComponent,
     LoginComponent,
-    MenuComponent
-
+    MenuComponent,
+      TurnosComponent,
+      TurnoComponent,
+      SaldosComponent
    ],
   imports: [
     HttpClientModule,
@@ -42,7 +49,7 @@ import { AjustesInventarioModule } from './Ajustes-inventario/Ajustes-inventario
     AjustesInventarioModule
   ],
 
-  providers: [PruebasService, apiService],
+  providers: [PruebasService, apiService, service, ApiRoute],
 
   bootstrap: [AppComponent]
 })

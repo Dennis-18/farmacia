@@ -17,6 +17,9 @@ import { ConsumoComponent } from './reportes/consumo/consumo.component';
 import { KardexComponent } from './reportes/kardex/kardex.component';
 import { AjustesInventarioComponent } from './Ajustes-inventario/Ajustes-inventario.component';
 import { IngresosComponent } from './reportes/ingresos/ingresos.component';
+import { TrazabilidadComponent } from './reportes/trazabilidad/trazabilidad.component';
+import { TurnosComponent } from './turnos/turnos.component';
+import { TurnoComponent } from './turno/turno.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -28,6 +31,8 @@ const routes: Routes = [
   {path: 'despacho', component: DespachoComponent},
   {path: 'ingreso', component: IngresoComponent},
   {path: 'ajustes-inventario', component: AjustesInventarioComponent},
+  {path: 'turnos', component: TurnosComponent}, 
+  {path: 'turno/:turno', component: TurnoComponent},
   {path: 'reportes', component: ReportesComponent, children:[
     {path: 'dashboard', component: DashboardComponent},
     {path: 'r-despachos', component: DespachosComponent},
@@ -36,7 +41,8 @@ const routes: Routes = [
     {path: 'valorizado', component: ValorizadoComponent},
     {path: 'consumo', component: ConsumoComponent},
     {path: 'kardex', component: KardexComponent},
-    {path: 'ingresos', component: IngresosComponent}
+    {path: 'ingresos', component: IngresosComponent},
+    {path: 'trazabilidad', component: TrazabilidadComponent}
   ]}
   
 ];

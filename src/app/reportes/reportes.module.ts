@@ -16,6 +16,7 @@ import { KardexComponent } from './kardex/kardex.component';
 import { ValorizadoComponent } from './valorizado/valorizado.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
 import { IngresosComponent } from './ingresos/ingresos.component';
+import { TrazabilidadComponent } from './trazabilidad/trazabilidad.component';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +33,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   ],
   declarations: [ReportesComponent, NavComponent,DashboardComponent,DespachosComponent, 
     ExistenciasComponent,MetricasComponent, ConsumoComponent, KardexComponent,ValorizadoComponent,
-    AjustesComponent, IngresosComponent],
+    AjustesComponent, IngresosComponent, TrazabilidadComponent],
   exports: [ReportesComponent],
   providers: [ReporteService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

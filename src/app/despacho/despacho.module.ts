@@ -4,7 +4,7 @@ import { DespachoComponent } from './despacho.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { apiService } from '../login/api.service';
+import { apiService } from '../servicios/api-service';
 
 //rutas
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';

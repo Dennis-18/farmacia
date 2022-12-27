@@ -186,8 +186,6 @@ export class MantenimientoProductosComponent  {
         console.log("no pueden quedar campos vacios")
 
       }else{
-
-        
             this.productosSvc.updateProducts(this.nuevoProducto.id, this.nuevoProducto).subscribe(
               (data:any) =>{
                console.log(data)

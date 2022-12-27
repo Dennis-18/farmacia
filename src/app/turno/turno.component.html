@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turno</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mt-4">Historial de movimientos</h1>
+
+    <div class="row">
+      <div *ngFor="let dato of turno">
+        <div class="col" ><p><strong>Fecha y hora de inicio:</strong> {{dato.fecha_inicio}} </p></div>
+        <div class="col"><p><strong>Fecha y hora de finalizacion:</strong> {{dato.fecha_final}}</p></div>
+        <div class="col"><p><strong>Notas:</strong> {{dato.notas}}</p></div>
+        <div class="col"><p><strong>Cantidad de Ingresos:</strong> {{dato.cantidad_ingresos}}</p></div>
+        <div class="col"><p><strong>Cantidad de Despachos:</strong> {{dato.cantidad_despachos}}</p></div>
+        <div class="col"><p><strong>Cantidad de Ajustes:</strong> {{dato.cantidad_ajustes}}</p></div>
+        <div class="col"><p><strong>Cantidad total de movimientos:</strong> {{dato.cantidad_movimientos}}</p></div>
+
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped table-hover mt4" id="movimientos">
+          <thead>
+            <tr>
+              <!-- <th scope="col">ID TURNO</th> -->
+              <th scope="col">CANTIDAD</th>
+              <th scope="col">FECHA DE REGISTRO</th>
+              <th scope="col">LOTE</th>
+              <th scope="col">PRODUCTO</th>
+              <th scope="col">SERVICIO</th>
+              <th scope="col">TIPO DE MOVIMIENTO</th>
+            </tr>
+          </thead>
+          <tbody>
+    
+            <tr *ngFor="let movimiento of movimientos" >
+              <!-- <td>{{movimiento.id_movimiento}}</td> -->
+              <td>{{movimiento.cantidad}}</td>
+              <td>{{movimiento.fecha_registro}}</td>
+              <td>{{movimiento.lote}}</td>
+              <td>{{movimiento.producto}}</td>
+              <td>{{movimiento.servicio}}</td>
+              <td>{{movimiento.tipo_movimiento}}</td>
+              <td>
+                <div>
+                  <!-- <button class="btn btn-info" (click)="detallesTurno(turno.id_turno)">Detalles</button> -->
+                </div>
+              </td>
+      
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-evenly">
+        <button class="btn btn-secondary" (click)="salir()">Salir</button>
+        <button class="btn btn-success" (click)="exportData()">Exportar Excel</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

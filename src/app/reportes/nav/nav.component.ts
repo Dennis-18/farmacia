@@ -42,7 +42,11 @@ export class NavComponent implements OnInit {
   }
 
   goIngresos(){
-    this.router.navigate(['reportes/ingresos'])
+    this.router.navigate(['reportes/ingresos']);
+  }
+
+  goTrazabilidad(){
+    this.router.navigate(['reportes/trazabilidad']);
   }
 
 }

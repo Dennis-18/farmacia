@@ -17,7 +17,10 @@ export class ReporteService {
     private url_existencia = this.ruta + 'existenciasInventario';
     private url_historial_despachos = this.ruta + 'historialDespachos';
     private url_ingresos_inventario = this.ruta + 'ingresosInventario';
+    private url_ingresos = this.ruta + 'ingresos'; //ingresos de inventario con producto y rango de fechas
 
+    private url_despachosFiltrados = this.ruta + 'despachosFiltrados';
+    private url_movimientos = this.ruta + 'movimientos'
     //token
     token = localStorage.getItem('token') || 'token';
     options = {
@@ -53,4 +56,15 @@ export class ReporteService {
 
     }
 
+    movimientos(body: any){
+        return this.httpClient.post(this.url_movimientos, body)
+    }
+
+    ingresos(body:any){
+        return this.httpClient.post(this.url_ingresos, body, {headers:this.options})
+    }
+
+    despachosFiltrados(body:any) {
+        return this.httpClient.post(this.url_despachosFiltrados, body);
+    }
 }

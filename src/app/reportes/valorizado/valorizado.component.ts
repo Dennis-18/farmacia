@@ -46,6 +46,7 @@ datosValorizado(){
       this.table = true;
       this.columnas = data.servicios;
       this.datos = data.mensaje;
+      console.table(this.datos);
       this.spinner.hide('sp3');
     }
   })
